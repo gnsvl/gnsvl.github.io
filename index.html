@@ -1,0 +1,889 @@
+# gnsvl.github.io<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şevval Güneş | Hibrit & Elektrikli Taşıtlar ve Havacılık Portfolyosu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: '#ec4899' // Pink/magenta accent matching the original profile theme
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom print styling to convert interactive site into highly professional resume page */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-layout {
+                display: block !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .card-print {
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+                background: white !important;
+                color: black !important;
+                break-inside: avoid;
+            }
+            .text-glow {
+                text-shadow: none !important;
+            }
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+        }
+        
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-brand-500 selection:text-white transition-colors duration-300">
+
+    
+    <!-- Top Action Bar (Floating & Sticky) -->
+    <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-brand-500 to-accent flex items-center justify-center text-white font-bold text-lg font-tech shadow-md shadow-brand-500/20">
+                    ŞG
+                </div>
+                <span class="font-tech text-sm tracking-widest text-slate-300 font-bold hidden sm:inline-block">PORTFOLYO // CV</span>
+            </div>
+            
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <!-- Live Edit Toggle -->
+                <button onclick="toggleEditMode()" id="editBtn" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span id="editBtnText">Düzenleme Modu</span>
+                </button>
+                
+                <!-- Print/PDF Button -->
+                <button onclick="window.print()" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white flex items-center space-x-1.5 shadow-lg shadow-brand-500/20 transition">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Yazdır / PDF Kaydet</span>
+                </button>
+
+                <!-- Theme Toggle (Visual Only for Elegance) -->
+                <button onclick="toggleTheme()" class="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Toast Notification System -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none no-print"></div>
+
+    
+    <!-- Hero / Header Section -->
+    <header class="relative overflow-hidden py-16 lg:py-24 border-b border-slate-800/80 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950">
+        <!-- Background Decorative Grid -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-25"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Profile Image & Quick Bio -->
+                <div class="lg:col-span-4 flex flex-col items-center text-center">
+                    <div class="relative group">
+                        <!-- Neon Pink Animated Ring -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-accent via-brand-500 to-accent rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <!-- Uploadable Profile Photo Container -->
+                        <div class="relative w-48 h-48 rounded-full overflow-hidden bg-slate-900 border-4 border-slate-950 flex items-center justify-center">
+                            <img id="profile-img" src="https://placehold.co/400x400/ec4899/ffffff?text=%C5%9Eevval+G%C3%BCne%C5%9F" alt="Şevval Güneş" class="w-full h-full object-cover">
+                            
+                            <!-- Hidden File Input for Customizing Picture in Live Edit -->
+                            <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 flex flex-col items-center justify-center transition cursor-pointer text-white no-print" onclick="document.getElementById('image-uploader').click()">
+                                <i class="fa-solid fa-camera text-2xl mb-1"></i>
+                                <span class="text-[10px] font-semibold">Fotoğraf Değiştir</span>
+                            </div>
+                            <input type="file" id="image-uploader" accept="image/*" class="hidden" onchange="previewImage(event)">
+                        </div>
+                    </div>
+
+                    <h1 id="editable-name" contenteditable="false" class="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl outline-none focus:ring-2 focus:ring-brand-500 rounded px-2">ŞEVVAL GÜNEŞ</h1>
+                    <p id="editable-title" contenteditable="false" class="mt-2 text-brand-500 font-tech font-semibold tracking-wider text-sm sm:text-base outline-none focus:ring-2 focus:ring-brand-500 rounded px-2">HİBRİT VE ELEKTRİKLİ TAŞITLAR TEKNİKERİ</p>
+                    <p id="editable-sub" contenteditable="false" class="text-slate-400 text-xs mt-1 outline-none focus:ring-2 focus:ring-brand-500 rounded px-2">Uçak Gövde Motor Teknisyeni</p>
+                    
+                    <!-- Quick Specs Badge -->
+                    <div class="mt-6 flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded-full text-xs flex items-center space-x-1.5">
+                            <i class="fa-solid fa-car-battery text-brand-500"></i>
+                            <span>Elektrikli Taşıtlar</span>
+                        </span>
+                        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded-full text-xs flex items-center space-x-1.5">
+                            <i class="fa-solid fa-plane text-accent"></i>
+                            <span>Havacılık</span>
+                        </span>
+                        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 rounded-full text-xs flex items-center space-x-1.5">
+                            <i class="fa-solid fa-drafting-compas text-teal-400"></i>
+                            <span>CAD / CAE</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Personal Statement / Introduction -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="p-6 sm:p-8 bg-slate-900/50 backdrop-blur-sm rounded-3xl border border-slate-800 relative">
+                        <div class="absolute -top-3 -left-3 bg-brand-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/20">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center space-x-2">
+                            <span>Merhaba, Ben Şevval!</span>
+                            <span class="inline-block animate-bounce">👋</span>
+                        </h3>
+                        
+                        <p id="editable-bio" contenteditable="false" class="text-slate-300 leading-relaxed text-sm sm:text-base space-y-4 outline-none focus:ring-2 focus:ring-brand-500 rounded p-2">
+                            Trakya Üniversitesi Hibrit ve Elektrikli Taşıtlar Teknolojisi Bölümü'nden 2023 yılında mezun oldum. Üniversite eğitimim boyunca Solidworks, AutoCAD gibi teknik çizim ve modelleme programları üzerinde yoğun çalışmalar gerçekleştirdim. Elektrikli araçlara olan derin ilgim ve bu teknolojilerin gelecekte nasıl şekilleneceğine dair duyduğum büyük merak beni bu alanda uzmanlaşmaya yönlendirdi. 
+                            <br><br>
+                            Lise eğitimimi ise havacılık disipliniyle, Erzincan Hezarfen Ahmet Çelebi MTAL'de Uçak Gövde Motor bölümünde tamamladım. Bu sayede hem makine hem de ileri düzey elektrik altyapısını birleştiren hibrit bir teknik vizyon kazandım. Teorik bilgilerimi Erzincan Havalimanı, Renault Bayhan ve General Oto'da gerçekleştirdiğim stajlarla pekiştirerek teknik danışmanlık, atölye mekaniği ve CRM yönetim süreçlerinde kıymetli pratik deneyimler elde ettim. Kendimi elektrikli taşıtlar ve yenilikçi mobilite çözümleri üzerinde daha fazla geliştirerek sektöre değer katmayı hedefliyorum.
+                        </p>
+                    </div>
+
+                    <!-- Contact Details Quick Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Phone -->
+                        <div class="flex items-center space-x-3 p-4 bg-slate-900/30 rounded-2xl border border-slate-800/60 hover:border-brand-500/50 transition">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-500">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500">Telefon</p>
+                                <a href="tel:05313448462" id="editable-phone" class="text-sm font-semibold text-white hover:text-brand-400 transition">0531 344 84 62</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="flex items-center space-x-3 p-4 bg-slate-900/30 rounded-2xl border border-slate-800/60 hover:border-accent/50 transition">
+                            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500">E-Posta</p>
+                                <a href="mailto:gnsseval98@gmail.com" id="editable-email" class="text-sm font-semibold text-white hover:text-accent transition">gnsseval98@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex items-start space-x-3 p-4 bg-slate-900/30 rounded-2xl border border-slate-800/60 sm:col-span-2">
+                            <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                                <div>
+                                    <p class="text-xs text-slate-500 font-bold">İstanbul Adresi</p>
+                                    <p id="editable-addr1" contenteditable="false" class="text-xs text-slate-300 mt-0.5 outline-none">Başakşehir Bld, Şahintepe Mah, Doğan Sk, No:4</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-bold">Erzincan Adresi</p>
+                                    <p id="editable-addr2" contenteditable="false" class="text-xs text-slate-300 mt-0.5 outline-none">Ulalar Bld, Barış Mah, 28. Sokak, No:13\2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Interactive Showcase Section (EV Drivetrain) -->
+    <section class="py-16 bg-slate-900/30 border-b border-slate-800/80 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold tracking-widest uppercase bg-accent/10 px-3 py-1 rounded-full">UZMANLIK ALANI DETAYLARI</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold mt-3 font-tech text-white">İnteraktif Elektrikli Araç Şasisi</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">Şevval'in eğitim aldığı modern elektrikli araç alt bileşenlerini keşfetmek için şasi üzerindeki aktif bölgelere tıklayın.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- SVG Chassis Visualizer -->
+                <div class="lg:col-span-7 bg-slate-950 p-6 rounded-3xl border border-slate-800 flex items-center justify-center relative shadow-inner">
+                    <svg viewBox="0 0 800 500" class="w-full h-auto max-w-lg">
+                        <!-- Car Outline Grid Reference -->
+                        <path d="M 150 150 L 650 150 A 60 60 0 0 1 710 210 L 710 290 A 60 60 0 0 1 650 350 L 150 350 A 60 60 0 0 1 90 290 L 90 210 A 60 60 0 0 1 150 150 Z" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5,5" />
+                        
+                        <!-- Wheels -->
+                        <!-- Front Left -->
+                        <rect x="180" y="100" width="80" height="40" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2" />
+                        <!-- Front Right -->
+                        <rect x="180" y="360" width="80" height="40" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2" />
+                        <!-- Rear Left -->
+                        <rect x="540" y="100" width="80" height="40" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2" />
+                        <!-- Rear Right -->
+                        <rect x="540" y="360" width="80" height="40" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2" />
+                        
+                        <!-- Axles -->
+                        <line x1="220" y1="140" x2="220" y2="360" stroke="#475569" stroke-width="6" />
+                        <line x1="580" y1="140" x2="580" y2="360" stroke="#475569" stroke-width="6" />
+                        
+                        <!-- Battery Pack (Center) -->
+                        <rect id="ev-battery" onclick="highlightEV('battery')" class="cursor-pointer transition duration-300 hover:fill-brand-500/20" x="280" y="180" width="240" height="140" rx="12" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="4" />
+                        <text x="400" y="255" fill="#e2e8f0" font-family="Orbitron" font-size="16" text-anchor="middle" font-weight="bold" class="pointer-events-none">BATARYA PAKETİ</text>
+                        <text x="400" y="275" fill="#38bdf8" font-family="sans-serif" font-size="11" text-anchor="middle" class="pointer-events-none">Lityum-İyon & Hücre Yönetimi</text>
+                        
+                        <!-- Electric Motor (Rear Axle Area) -->
+                        <rect id="ev-motor" onclick="highlightEV('motor')" class="cursor-pointer transition duration-300 hover:fill-pink-500/20" x="530" y="220" width="100" height="60" rx="10" fill="#831843" stroke="#ec4899" stroke-width="3" />
+                        <text x="580" y="255" fill="#fbcfe8" font-family="Orbitron" font-size="11" text-anchor="middle" font-weight="bold" class="pointer-events-none">E-MOTOR</text>
+                        
+                        <!-- Inverter / Control Unit -->
+                        <rect id="ev-inverter" onclick="highlightEV('inverter')" class="cursor-pointer transition duration-300 hover:fill-teal-500/20" x="420" y="210" width="80" height="50" rx="6" fill="#115e59" stroke="#14b8a6" stroke-width="2" />
+                        <text x="460" y="240" fill="#ccfbf1" font-family="Orbitron" font-size="10" text-anchor="middle" font-weight="bold" class="pointer-events-none">EVÜ / INVERTER</text>
+
+                        <!-- Aerodynamics / Chassis Flow Indicators -->
+                        <path d="M 50 250 Q 200 210, 400 220 T 750 250" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="10,10" class="animate-[dash_5s_linear_infinite]" />
+                    </svg>
+                </div>
+
+                <!-- Info panel dynamically updating based on clicks -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div id="ev-info-card" class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 h-full flex flex-col justify-between min-h-[300px]">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div id="ev-info-icon" class="w-12 h-12 rounded-2xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-car-battery"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-500 font-bold uppercase tracking-wider">TEKNOLOJİK BİLEŞEN</span>
+                                    <h4 id="ev-info-title" class="text-xl font-bold text-white font-tech">Batarya Hücre ve Paketleme Teknolojileri</h4>
+                                </div>
+                            </div>
+                            <p id="ev-info-desc" class="text-slate-300 text-sm leading-relaxed">
+                                Hibrit ve elektrikli taşıtlarda kullanılan yüksek voltajlı lityum iyon bataryaların şasiye entegrasyonu, termal yönetim sistemleri (sıvı/hava soğutma), BMS (Batarya Yönetim Sistemi) yazılım mekanizmaları ve güvenlik standartları üzerine detaylı çalışmalar yapılmıştır.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-slate-500">İlişkili Yazılım Yetkinliği:</span>
+                            <span class="px-2.5 py-1 bg-slate-800 text-teal-400 rounded-lg text-xs font-semibold border border-slate-700">CAE & Solidworks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Timeline: Education & Experience -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Education Column -->
+            <div>
+                <div class="flex items-center space-x-3 mb-8">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-xl shadow-lg">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-white font-tech">Eğitim Bilgileri</h2>
+                </div>
+
+                <div class="space-y-6 border-l-2 border-slate-800 pl-6 ml-6 relative">
+                    <!-- Education Item 1 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-brand-500 border-4 border-slate-950 group-hover:bg-accent transition-colors"></div>
+                        
+                        <span class="text-xs text-brand-500 font-semibold">2021 - 2023 (Mezuniyet: 16.06.2023)</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-400 transition">Trakya Üniversitesi</h4>
+                        <p class="text-sm text-slate-400 font-medium">Hibrit ve Elektrikli Taşıtlar Teknolojisi</p>
+                        <p class="text-xs text-slate-500 mt-1">Elektrikli motorlar, batarya teknolojisi, araç elektroniği ve Solidworks tabanlı CAD çizimleri üzerine pratik eğitim programı.</p>
+                    </div>
+
+                    <!-- Education Item 2 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-accent transition-colors"></div>
+                        
+                        <span class="text-xs text-slate-500 font-semibold">Aktif</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-400 transition">İstanbul Üniversitesi</h4>
+                        <p class="text-sm text-slate-400 font-medium">Bilgisayar Programcılığı</p>
+                        <p class="text-xs text-slate-500 mt-1">Yazılım mimarileri, veri tabanları ve temel programlama mantığı üzerinde akademik eğitim.</p>
+                    </div>
+
+                    <!-- Education Item 3 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-accent transition-colors"></div>
+                        
+                        <span class="text-xs text-slate-500 font-semibold">2016 - 2020 (Mezuniyet: 19.06.2020)</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-brand-400 transition">Hezarfen Ahmet Çelebi MTAL</h4>
+                        <p class="text-sm text-slate-400 font-medium">Uçak Gövde Motor Bölümü</p>
+                        <p class="text-xs text-slate-500 mt-1">Uçak mekaniği, aerodinamik ilkeler, motor montaj ve temel yapısal bileşenler üzerine lise teknik uzmanlığı.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Column -->
+            <div>
+                <div class="flex items-center space-x-3 mb-8">
+                    <div class="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-xl shadow-lg">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-white font-tech">İş & Staj Deneyimleri</h2>
+                </div>
+
+                <div class="space-y-6 border-l-2 border-slate-800 pl-6 ml-6 relative">
+                    <!-- Work Item 1 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-accent border-4 border-slate-950 group-hover:bg-brand-500 transition-colors"></div>
+                        
+                        <span class="text-xs text-accent font-semibold">Şubat 2023 - Haz 2023</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition">General Oto</h4>
+                        <p class="text-sm text-slate-400 font-medium">Teknik Stajyer</p>
+                        <p class="text-xs text-slate-500 mt-1">Teknik danışmanlık birimleri, mekanik atölye süreçleri ve CRM (Müşteri İlişkileri Yönetimi) departmanlarında dönüşümlü eğitimler ve pratik iş deneyimleri edinildi.</p>
+                    </div>
+
+                    <!-- Work Item 2 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand-500 transition-colors"></div>
+                        
+                        <span class="text-xs text-slate-500 font-semibold">2018 - 2019 Yaz Dönemi</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition">Renault Bayhan</h4>
+                        <p class="text-sm text-slate-400 font-medium">Stajyer</p>
+                        <p class="text-xs text-slate-500 mt-1">Otomotiv genel bakım, arıza teşhis cihazlarının kullanımı ve servis prosedürleri üzerine pratik uygulama.</p>
+                    </div>
+
+                    <!-- Work Item 3 -->
+                    <div class="relative group">
+                        <!-- Bullet Point -->
+                        <div class="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand-500 transition-colors"></div>
+                        
+                        <span class="text-xs text-slate-500 font-semibold">2017 - 2018 Yaz Dönemi</span>
+                        <h4 class="text-lg font-bold text-white group-hover:text-accent transition">Erzincan Havalimanı</h4>
+                        <p class="text-sm text-slate-400 font-medium">Stajyer</p>
+                        <p class="text-xs text-slate-500 mt-1">Havacılık güvenlik kuralları, pist bakım lojistiği, acil yangın tatbikat gözlemciliği ve uçak parametre analizleri.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <!-- Courses & Certificates Section -->
+    <section class="py-16 bg-slate-900/40 border-y border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-teal-400 text-xs font-bold tracking-widest uppercase bg-teal-400/10 px-3 py-1 rounded-full">KİŞİSEL GELİŞİM</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mt-3 font-tech text-white">Kurslar & Sertifikalar</h2>
+                </div>
+                <!-- Search & Filters -->
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-2 no-print">
+                    <button onclick="filterCertificates('all')" class="cert-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-500 text-white transition">Tümü</button>
+                    <button onclick="filterCertificates('cad')" class="cert-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition">CAD & Tasarım</button>
+                    <button onclick="filterCertificates('auto')" class="cert-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition">Endüstriyel & Otomotiv</button>
+                </div>
+            </div>
+
+            <div id="certs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Cert 1 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-brand-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="cad">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-brand-500/10 text-brand-400 text-[10px] font-bold rounded-md uppercase">SOLIDWORKS</span>
+                            <span class="text-xs text-slate-500">2022</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">SOLIDWORKS Çizim Eğitimi</h4>
+                        <p class="text-xs text-slate-400">Elginkan Vakfı & Üniversite iş birliği ile temel çizim teknikleri, parça tasarımı ve montaj mantığı üzerine ileri seviye pratik çalışmalar.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-brand-500 font-semibold">Elginkan Vakfı</div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-teal-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="cad">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-teal-500/10 text-teal-400 text-[10px] font-bold rounded-md uppercase">CAE & AR-GE</span>
+                            <span class="text-xs text-slate-500">2024</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">CAE (Bilgisayar Destekli Analiz)</h4>
+                        <p class="text-xs text-slate-400">Bilgisayar Destekli Analiz yazılımlarının Ar-Ge ve endüstriyel mukavemet/akış analiz süreçlerindeki önemine dair kapsamlı eğitim.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-teal-400 font-semibold">İstanbul Sanayi Odası</div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-pink-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="auto">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-pink-500/10 text-pink-400 text-[10px] font-bold rounded-md uppercase">OTOMOTİV</span>
+                            <span class="text-xs text-slate-500">2021</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">Skoda Teknik Eğitimi</h4>
+                        <p class="text-xs text-slate-400">Yeni nesil araç mekaniği, diferansiyel dişli sistemleri, aerodinamik sürtünme katsayıları ve mekanik bileşenlerin analizi.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-pink-400 font-semibold">Skoda İşletme Eğitimi</div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="auto">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 text-[10px] font-bold rounded-md uppercase">GÜVENLİK</span>
+                            <span class="text-xs text-slate-500">2019</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">Havalimanı Güvenlik Bilinci</h4>
+                        <p class="text-xs text-slate-400">Havalimanı apron operasyonel kuralları, pist güvenlik parametreleri ve uçak yangın söndürme/tahliye tatbikat prosedürleri eğitimi.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-amber-400 font-semibold">Erzincan Havalimanı</div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="auto">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold rounded-md uppercase">DİJİTAL DÖNÜŞÜM</span>
+                            <span class="text-xs text-slate-500">2022</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">Üretimde Dijital Dönüşüm</h4>
+                        <p class="text-xs text-slate-400">Endüstri 4.0 konseptleri, üretimde dijitalleşme ile kalite kontrol optimizasyonu ve operasyonel verimlilik geliştirme.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-cyan-400 font-semibold">İstanbul Sanayi Odası</div>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card p-6 bg-slate-950 border border-slate-800 hover:border-purple-500/50 rounded-2xl transition duration-300 flex flex-col justify-between" data-category="cad">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2 py-0.5 bg-purple-500/10 text-purple-400 text-[10px] font-bold rounded-md uppercase">METODOLOJİ</span>
+                            <span class="text-xs text-slate-500">2022</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-2">Sorun Çözme Teknikleri</h4>
+                        <p class="text-xs text-slate-400">Mühendislik ve operasyon süreçlerinde 8D, Balık Kılçığı ve kök neden analiz metotlarıyla analitik sorun giderme disiplini.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-900 text-xs text-purple-400 font-semibold">Elginkan Vakfı</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Skills, Hobbies & Languages -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Language Level -->
+            <div class="bg-slate-900/40 p-6 rounded-3xl border border-slate-800">
+                <h3 class="text-lg font-bold text-white font-tech mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-language text-brand-500"></i>
+                    <span>Yabancı Dil</span>
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs text-slate-400 mb-1">
+                            <span>İngilizce</span>
+                            <span class="text-brand-400">Orta Düzey (Intermediate)</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-500 h-full w-[65%] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAD & Hard Skills -->
+            <div class="bg-slate-900/40 p-6 rounded-3xl border border-slate-800">
+                <h3 class="text-lg font-bold text-white font-tech mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-screwdriver-wrench text-accent"></i>
+                    <span>Teknik Yetkinlikler</span>
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-xs text-slate-300 rounded-lg">SOLIDWORKS (İleri)</span>
+                        <span class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-xs text-slate-300 rounded-lg">AutoCAD</span>
+                        <span class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-xs text-slate-300 rounded-lg">CAE Analizi</span>
+                        <span class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-xs text-slate-300 rounded-lg">Araç Aerodinamisi</span>
+                        <span class="px-2.5 py-1 bg-slate-950 border border-slate-800 text-xs text-slate-300 rounded-lg">Batarya Paketleme</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests & Hobbies -->
+            <div class="bg-slate-900/40 p-6 rounded-3xl border border-slate-800">
+                <h3 class="text-lg font-bold text-white font-tech mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-heart text-teal-400"></i>
+                    <span>İlgi Alanları & Hobiler</span>
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-teal-500/10 text-teal-300 rounded-full text-xs">Voleybol</span>
+                    <span class="px-3 py-1 bg-teal-500/10 text-teal-300 rounded-full text-xs">Fitness</span>
+                    <span class="px-3 py-1 bg-teal-500/10 text-teal-300 rounded-full text-xs">Katı Çizim & Tasarım</span>
+                    <span class="px-3 py-1 bg-teal-500/10 text-teal-300 rounded-full text-xs">Elektrikli Araç Trendleri</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="py-16 bg-slate-900/20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-extrabold text-white font-tech mb-8 text-center">Referanslar</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Ref 1 -->
+                <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl flex flex-col justify-between hover:border-brand-500/40 transition duration-300">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                <i class="fa-solid fa-user-tie text-brand-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">İsmail DEMİRTAŞ</h4>
+                                <p class="text-xs text-slate-500">Makine Mühendisi</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400">Forback Ambalaj bünyesindeki mühendislik çalışmalarında referans.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">0545 355 44 46</span>
+                        <button onclick="copyToClipboard('05453554446', 'İsmail Demirtaş Telefonu')" class="p-1.5 hover:bg-slate-800 rounded-lg text-brand-500 no-print" title="Numarayı Kopyala">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ref 2 -->
+                <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl flex flex-col justify-between hover:border-accent/40 transition duration-300">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                <i class="fa-solid fa-user-tie text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Erdal BALCI</h4>
+                                <p class="text-xs text-slate-500">Satış Sonrası Hizmetler Müdürü</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400">General Oto'daki staj süresince teknik gözlem ve operasyon referansı.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">0533 325 10 03</span>
+                        <button onclick="copyToClipboard('05333251003', 'Erdal Balcı Telefonu')" class="p-1.5 hover:bg-slate-800 rounded-lg text-accent no-print" title="Numarayı Kopyala">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ref 3 -->
+                <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl flex flex-col justify-between hover:border-teal-500/40 transition duration-300">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+                                <i class="fa-solid fa-user-tie text-teal-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Selda KABAN</h4>
+                                <p class="text-xs text-slate-500">Girişimci - Pazarlamacı</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400">@ala_meze kurucusu ve girişimcilik projelerinde iş ortağı referansı.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">0530 926 25 68</span>
+                        <button onclick="copyToClipboard('05309262568', 'Selda Kaban Telefonu')" class="p-1.5 hover:bg-slate-800 rounded-lg text-teal-400 no-print" title="Numarayı Kopyala">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Contact / Message Section -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 no-print">
+        <div class="bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 rounded-3xl border border-slate-800 p-8 sm:p-12 relative overflow-hidden">
+            <div class="absolute -right-24 -bottom-24 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-brand-500 text-xs font-bold tracking-widest uppercase bg-brand-500/10 px-3 py-1 rounded-full">İLETİŞİM</span>
+                    <h2 class="text-3xl font-extrabold text-white font-tech">Şevval ile Bağlantı Kur</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Hibrit/elektrikli araç projeleri, teknik çizim/solidworks talepleri veya teknik pozisyon açıklarınız için bana hızlıca mesaj iletebilirsiniz. 
+                    </p>
+                    <div class="pt-4 space-y-2">
+                        <div class="flex items-center space-x-2 text-slate-300 text-xs">
+                            <i class="fa-regular fa-clock text-brand-500"></i>
+                            <span>Ortalama dönüş süresi: 24 Saat</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-slate-300 text-xs">
+                            <i class="fa-solid fa-map-pin text-accent"></i>
+                            <span>İstanbul / Erzincan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Ad Soyad</label>
+                                <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500" placeholder="Adınızı yazın">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">E-Posta</label>
+                                <input type="email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500" placeholder="ornek@mail.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Konu</label>
+                            <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500" placeholder="Hangi konuda yazıyorsunuz?">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Mesajınız</label>
+                            <textarea rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500" placeholder="Mesajınızı buraya girin..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-500 transition font-semibold rounded-xl text-white text-sm shadow-lg shadow-brand-500/20">
+                            Mesaj Gönder <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-900 text-center text-xs text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <p>© 2026 Şevval Güneş. Tüm hakları saklıdır.</p>
+            <p class="no-print">Tasarım & Fonksiyonellik modern endüstriyel standartlar çerçevesinde geliştirilmiştir.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive EV Chassis Controller
+        const evData = {
+            battery: {
+                icon: "fa-solid fa-car-battery",
+                title: "Batarya Paketleme & Yönetimi",
+                desc: "Yüksek voltajlı batarya hücrelerinin montajı, şasi üstü ağırlık merkezi hesaplamaları, termal sıvı kanalları tasarımı ve BMS sistem yapısı üzerine odaklanılmış alan.",
+                accentClass: "text-brand-500"
+            },
+            motor: {
+                icon: "fa-solid fa-bolt",
+                title: "Elektrik Motoru & Sürücü Entegrasyonu",
+                desc: "Fırçasız DC (BLDC) ve senkron motorların tork/güç karakteristikleri, araç aktarma organlarına (redüktör/diferansiyel) montajı ve motor tahrik aşamaları.",
+                accentClass: "text-pink-500"
+            },
+            inverter: {
+                icon: "fa-solid fa-microchip",
+                title: "EVÜ / Inverter Kontrolcü Birimi",
+                desc: "Doğru akımı (DC) değişken frekanslı alternatif akıma (AC) dönüştürerek motor torkunu hassas bir şekilde kontrol eden elektrik güç ünitelerinin devreye alınması ve kalibrasyonu.",
+                accentClass: "text-teal-400"
+            }
+        };
+
+        function highlightEV(componentKey) {
+            const data = evData[componentKey];
+            if (!data) return;
+
+            // Highlight in SVG
+            document.querySelectorAll('rect[id^="ev-"]').forEach(el => {
+                el.setAttribute('stroke-width', '2');
+            });
+            const targetEl = document.getElementById(`ev-${componentKey}`);
+            if (targetEl) {
+                targetEl.setAttribute('stroke-width', '6');
+            }
+
+            // Update panel
+            document.getElementById('ev-info-icon').className = `w-12 h-12 rounded-2xl bg-slate-900 text-xl flex items-center justify-center ${data.accentClass}`;
+            document.getElementById('ev-info-icon').innerHTML = `<i class="${data.icon}"></i>`;
+            document.getElementById('ev-info-title').innerText = data.title;
+            document.getElementById('ev-info-desc').innerText = data.desc;
+
+            showToast(`${data.title} inceleniyor.`);
+        }
+
+        // Custom Toast Notifications
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = "px-4 py-2.5 bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-xl shadow-2xl flex items-center space-x-2 pointer-events-auto transition-all duration-300 opacity-0 translate-y-2";
+            toast.innerHTML = `<i class="fa-solid fa-circle-info text-brand-500"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Animation Trigger
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+            }, 10);
+
+            // Automatic Removal
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Copy Clipboard Helper
+        function copyToClipboard(text, name) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast(`${name} başarıyla kopyalandı.`);
+        }
+
+        // Form Submission Mock
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Harika! Mesajınız başarıyla simüle edildi ve Şevval Güneş'e iletildi.");
+            document.getElementById('contact-form').reset();
+        }
+
+        // Custom Certificate Filter
+        function filterCertificates(category) {
+            const cards = document.querySelectorAll('.cert-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Active Tab Style Styling
+            document.querySelectorAll('.cert-tab').forEach(tab => {
+                tab.classList.remove('bg-brand-500', 'text-white');
+                tab.classList.add('bg-slate-800', 'text-slate-400');
+            });
+            event.currentTarget.classList.remove('bg-slate-800', 'text-slate-400');
+            event.currentTarget.classList.add('bg-brand-500', 'text-white');
+            
+            showToast(`Filtre uygulandı: ${category === 'all' ? 'Tümü' : category.toUpperCase()}`);
+        }
+
+        // Toggle Live Edit Mode
+        let isEditMode = false;
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const editBtn = document.getElementById('editBtn');
+            const editBtnText = document.getElementById('editBtnText');
+            
+            const editableElements = [
+                'editable-name', 'editable-title', 'editable-sub', 
+                'editable-bio', 'editable-phone', 'editable-email', 
+                'editable-addr1', 'editable-addr2'
+            ];
+
+            if (isEditMode) {
+                editBtn.classList.remove('bg-slate-800', 'text-slate-300');
+                editBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-500');
+                editBtnText.innerText = 'Düzenlemeyi Tamamla';
+                
+                editableElements.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.setAttribute('contenteditable', 'true');
+                        el.classList.add('ring-2', 'ring-emerald-500', 'bg-slate-900/60', 'p-1');
+                    }
+                });
+                showToast("Düzenleme modu aktif. Metinlerin üzerine tıklayarak değiştirebilirsiniz!");
+            } else {
+                editBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-500');
+                editBtn.classList.add('bg-slate-800', 'text-slate-300');
+                editBtnText.innerText = 'Düzenleme Modu';
+                
+                editableElements.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.setAttribute('contenteditable', 'false');
+                        el.classList.remove('ring-2', 'ring-emerald-500', 'bg-slate-900/60', 'p-1');
+                    }
+                });
+                showToast("Değişiklikler portfolyoya uygulandı!");
+            }
+        }
+
+        // Image Uploader Handler
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('profile-img');
+                output.src = reader.result;
+                showToast("Profil fotoğrafı güncellendi.");
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // Theme Toggle Functionality (Visual aesthetic changes only)
+        let isDarkMode = true;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (isDarkMode) {
+                body.classList.remove('bg-slate-50', 'text-slate-900');
+                body.classList.add('bg-slate-950', 'text-slate-100');
+                themeIcon.className = "fa-solid fa-moon";
+                showToast("Gece Görüşü Aktif (Koyu Tema)");
+            } else {
+                body.classList.remove('bg-slate-950', 'text-slate-100');
+                body.classList.add('bg-slate-50', 'text-slate-900');
+                themeIcon.className = "fa-solid fa-sun";
+                showToast("Gündüz Görüşü Aktif (Açık Tema)");
+            }
+        }
+    </script>
+</body>
+</html>
